@@ -25,13 +25,13 @@ public class TableReaderService {
         File f = new File(fileName);
         if (f.exists() && !f.isDirectory()) {
             try {
-                List<Employee> employees = new CsvToBeanBuilder(new FileReader(fileName))
+                List items = new CsvToBeanBuilder(new FileReader(fileName))
                         .withSeparator(';')
                         .withSkipLines(1)
                         .withType(className)
                         .build()
                         .parse();
-                return employees;
+                return items;
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
